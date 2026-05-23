@@ -39,6 +39,7 @@
   --font-serif:    'Noto Serif SC', 'Songti SC', 'SimSun', serif;
   --font-sans:     'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --nav-h:         56px;
+  --painting-bg:   url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Emperor_Huizong_-_Five-colored_parakeet_on_a_blossoming_apricot_tree_-_Google_Art_Project.jpg");
 }
 
 html { scroll-behavior: smooth; }
@@ -50,6 +51,27 @@ body {
   font-size: 15px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(249,246,240,0.80), rgba(249,246,240,0.90)),
+    var(--painting-bg);
+  background-size: cover;
+  background-position: center 18%;
+  background-attachment: fixed;
+  opacity: 0.58;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: rgba(249,246,240,0.58);
 }
 
 /* ── Typography helpers ───────────────────────────────────────── */
@@ -61,7 +83,8 @@ body {
   top: 0;
   z-index: 200;
   height: var(--nav-h);
-  background: var(--paper-warm);
+  background: rgba(243, 237, 228, 0.88);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-mid);
   display: flex;
   align-items: center;
@@ -126,7 +149,7 @@ body {
 
 /* ── Hero ─────────────────────────────────────────────────────── */
 .hero {
-  background: var(--paper-warm);
+  background: linear-gradient(90deg, rgba(243,237,228,0.92), rgba(243,237,228,0.74));
   border-bottom: 1px solid var(--border);
   padding: 3rem 2rem 2.5rem;
   display: grid;
@@ -630,6 +653,12 @@ footer {
 footer p { font-size: 12px; color: var(--ink-ghost); }
 footer a { color: var(--accent-soft); text-decoration: none; font-size: 12px; }
 footer a:hover { color: var(--accent); }
+.image-credit {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--ink-ghost);
+}
 
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 900px) {
@@ -982,7 +1011,10 @@ footer a:hover { color: var(--accent); }
 
 <!-- ── Footer ─────────────────────────────────────────────────── -->
 <footer>
-  <p>工艺与技术史读书班 · Craft &amp; Technology Reading Group · 邀请制</p>
+  <p>
+    工艺与技术史读书班 · Craft &amp; Technology Reading Group · 邀请制
+    <span class="image-credit">背景图：宋徽宗《五色鹦鹉图》，Wikimedia Commons / Public Domain</span>
+  </p>
   <a href="mailto:admin@example.com">联系管理员</a>
 </footer>
 
