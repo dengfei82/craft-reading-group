@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工艺与技术史读书班</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Tokens ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --accent:        #8B3A1A;
+  --accent-soft:   #c97050;
+  --accent-pale:   #fdf4f0;
+  --accent-border: rgba(139,58,26,0.35);
+  --teal:          #2a6b60;
+  --teal-pale:     #f0f9f7;
+  --teal-border:   rgba(42,107,96,0.35);
+  --gold:          #9a7020;
+  --gold-pale:     #faf5e8;
+  --gold-border:   rgba(154,112,32,0.35);
+  --ink:           #1a1714;
+  --ink-mid:       #4a4540;
+  --ink-soft:      #7a7570;
+  --ink-ghost:     #aaa49e;
+  --paper:         #f9f6f0;
+  --paper-warm:    #f3ede4;
+  --paper-mid:     #e8e0d4;
+  --white:         #ffffff;
+  --border:        rgba(26,23,20,0.10);
+  --border-mid:    rgba(26,23,20,0.18);
+  --border-strong: rgba(26,23,20,0.28);
+  --radius-sm:     4px;
+  --radius-md:     8px;
+  --radius-lg:     12px;
+  --font-serif:    'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+  --font-sans:     'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --nav-h:         56px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography helpers ───────────────────────────────────────── */
+.serif { font-family: var(--font-serif); }
+
+/* ── Top Navigation ───────────────────────────────────────────── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  height: var(--nav-h);
+  background: var(--paper-warm);
+  border-bottom: 1px solid var(--border-mid);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logo-zh {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+.logo-en {
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 0;
+}
+.nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 14px;
+  height: var(--nav-h);
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--ink-mid);
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.nav-badge {
+  font-size: 10px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 10px;
+  padding: 1px 5px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ── Hero ─────────────────────────────────────────────────────── */
+.hero {
+  background: var(--paper-warm);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 2rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--accent-soft);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.45;
+  margin-bottom: 0.9rem;
+  letter-spacing: 0.04em;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.hero-desc {
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.85;
+  max-width: 520px;
+}
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 1.25rem;
+}
+.hero-tag {
+  font-size: 11px;
+  padding: 3px 9px;
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius-sm);
+  color: var(--ink-soft);
+  background: var(--white);
+  letter-spacing: 0.02em;
+}
+
+/* Next meeting card */
+.next-card {
+  background: var(--white);
+  border: 1px solid var(--border-mid);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+}
+.next-card .label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.65rem;
+}
+.next-card h3 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.55;
+  margin-bottom: 0.6rem;
+}
+.next-card .meta {
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+.next-card .meta strong { color: var(--ink-mid); font-weight: 500; }
+.btn-primary {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 7px 16px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: #a04820; }
+
+/* ── Main layout ──────────────────────────────────────────────── */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ── Section headers ──────────────────────────────────────────── */
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.1rem;
+}
+.sec-head-left {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+.sec-num {
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  font-weight: 500;
+}
+.sec-head h2 {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+.sec-more {
+  font-size: 12px;
+  color: var(--accent-soft);
+  text-decoration: none;
+  cursor: pointer;
+}
+.sec-more:hover { color: var(--accent); }
+
+/* ── Research direction tags ──────────────────────────────────── */
+.group-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink-ghost);
+  text-transform: uppercase;
+  margin: 12px 0 6px;
+}
+.tag-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+.tag-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.tag {
+  background: var(--white);
+  border: 0.5px solid var(--border-mid);
+  border-radius: var(--radius-md);
+  padding: 8px 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.13s, background 0.13s;
+}
+.tag:hover { border-color: var(--accent-soft); background: var(--accent-pale); }
+.tag.on  { border-color: var(--accent); background: var(--accent-pale); }
+.tag.on .t-zh { color: var(--accent); }
+.t-zh {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 1px;
+  line-height: 1.35;
+}
+.t-en {
+  font-size: 10px;
+  color: var(--ink-ghost);
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  display: block;
+}
+
+/* period tags — teal */
+.tag.period { background: var(--paper); }
+.tag.period:hover { border-color: var(--teal); background: var(--teal-pale); }
+.tag.period.on { border-color: var(--teal); background: var(--teal-pale); }
+.tag.period.on .t-zh { color: var(--teal); }
+
+/* geo tags — gold */
+.tag.geo { background: var(--paper); }
+.tag.geo:hover { border-color: var(--gold); background: var(--gold-pale); }
+.tag.geo.on { border-color: var(--gold); background: var(--gold-pale); }
+.tag.geo.on .t-zh { color: var(--gold); }
+
+.tag-hint {
+  margin-top: 0.75rem;
+  font-size: 11px;
+  color: var(--ink-ghost);
+  line-height: 1.65;
+}
+
+/* ── Session timeline ─────────────────────────────────────────── */
+.timeline { display: flex; flex-direction: column; }
+.tl-row {
+  display: grid;
+  grid-template-columns: 64px 20px 1fr;
+  gap: 0 10px;
+  align-items: start;
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.tl-row:last-child { border-bottom: none; }
+.tl-date {
+  font-size: 11px;
+  color: var(--ink-soft);
+  text-align: right;
+  padding-top: 4px;
+  line-height: 1.4;
+}
+.tl-spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+}
+.tl-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tl-dot.done { background: var(--teal); }
+.tl-dot.next { background: var(--accent); }
+.tl-dot.plan { background: transparent; border: 1.5px solid var(--ink-ghost); }
+.tl-line {
+  width: 1px;
+  flex: 1;
+  min-height: 10px;
+  margin-top: 3px;
+  background: var(--border-mid);
+}
+.tl-row:last-child .tl-line { display: none; }
+.tl-body { padding-top: 2px; }
+.tl-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 2px;
+}
+.tl-desc {
+  font-size: 11px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  font-weight: 500;
+  vertical-align: 1px;
+  line-height: 1.5;
+}
+.b-done { background: #d3ece8; color: #085041; }
+.b-next { background: var(--accent-pale); color: #712B13; border: 0.5px solid var(--accent-soft); }
+.b-plan { background: var(--paper-mid); color: var(--ink-ghost); }
+
+/* ── Divider ──────────────────────────────────────────────────── */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-ghost);
+  font-size: 12px;
+  margin: 0.5rem 0 2rem;
+  letter-spacing: 0.06em;
+}
+.ornament::before,
+.ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Database grid ────────────────────────────────────────────── */
+.db-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.db-card {
+  background: var(--white);
+  border: 0.5px solid var(--border-mid);
+  border-radius: var(--radius-md);
+  padding: 12px 10px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.db-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-1px);
+}
+.db-logo {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--teal);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.db-name {
+  font-size: 10px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.db-status {
+  font-size: 10px;
+  color: var(--teal);
+  font-weight: 500;
+  margin-top: 5px;
+}
+.db-card.add {
+  border-style: dashed;
+  opacity: 0.55;
+}
+.db-card.add .db-logo { color: var(--ink-ghost); }
+.db-card.add .db-status { color: var(--ink-ghost); }
+
+/* ── Alert feed ───────────────────────────────────────────────── */
+.alert-list { display: flex; flex-direction: column; }
+.alert-row {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--border);
+  align-items: start;
+}
+.alert-row:last-child { border-bottom: none; }
+.alert-src {
+  font-size: 10px;
+  font-weight: 500;
+  color: #fff;
+  background: var(--teal);
+  border-radius: var(--radius-sm);
+  padding: 3px 4px;
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+.alert-src.jstor { background: var(--gold); }
+.alert-src.cnki  { background: var(--accent); }
+.alert-new {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-right: 4px;
+  vertical-align: 2px;
+}
+.alert-title {
+  font-size: 12px;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 2px;
+}
+.alert-meta { font-size: 10px; color: var(--ink-ghost); }
+
+/* ── Email panel ──────────────────────────────────────────────── */
+.email-panel {
+  background: var(--white);
+  border: 0.5px solid var(--border-mid);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+.email-panel h3 {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+}
+.email-panel p {
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  margin-bottom: 0.85rem;
+}
+.kw-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 0.85rem;
+}
+.kw-chip {
+  font-size: 11px;
+  padding: 2px 9px;
+  background: var(--accent-pale);
+  color: var(--accent);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 0.5px solid transparent;
+  transition: background 0.12s;
+  user-select: none;
+}
+.kw-chip.sel {
+  background: var(--accent);
+  color: #fff;
+}
+.freq-row {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 0.85rem;
+}
+.freq-btn {
+  flex: 1;
+  padding: 5px;
+  font-size: 11px;
+  border: 0.5px solid var(--border-mid);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  cursor: pointer;
+  color: var(--ink-mid);
+  font-family: var(--font-sans);
+  transition: all 0.12s;
+}
+.freq-btn.on {
+  background: var(--teal-pale);
+  border-color: var(--teal);
+  color: var(--teal);
+}
+.check-list { display: flex; flex-direction: column; gap: 7px; }
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--ink-mid);
+  cursor: pointer;
+}
+.check-row input[type="checkbox"] { accent-color: var(--teal); width: 13px; height: 13px; }
+.email-input-row {
+  display: flex;
+  gap: 5px;
+  margin-top: 0.85rem;
+}
+.email-input-row input[type="email"] {
+  flex: 1;
+  padding: 7px 10px;
+  font-size: 12px;
+  border: 0.5px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  font-family: var(--font-sans);
+  color: var(--ink);
+  outline: none;
+}
+.email-input-row input[type="email"]:focus { border-color: var(--accent-soft); }
+.email-input-row button {
+  padding: 7px 12px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  letter-spacing: 0.04em;
+}
+.email-input-row button:hover { background: #a04820; }
+
+/* ── Footer ───────────────────────────────────────────────────── */
+footer {
+  margin-top: 3rem;
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+footer p { font-size: 12px; color: var(--ink-ghost); }
+footer a { color: var(--accent-soft); text-decoration: none; font-size: 12px; }
+footer a:hover { color: var(--accent); }
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 1rem 1.5rem; }
+  .hero .next-card { max-width: 400px; }
+  .two-col { grid-template-columns: 1fr; gap: 2rem; }
+  .email-panel { grid-template-columns: 1fr; gap: 1.5rem; }
+  .db-grid { grid-template-columns: repeat(4, 1fr); }
+  .nav-links a { padding: 0 10px; font-size: 12px; }
+  .main { padding: 1.5rem 1rem; }
+}
+@media (max-width: 600px) {
+  .logo-en { display: none; }
+  .db-grid { grid-template-columns: repeat(2, 1fr); }
+  .tag-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .nav-links a span.nav-text { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────────────────── -->
+<nav class="topbar">
+  <a class="logo" href="#top">
+    <span class="logo-zh">工艺与技术史读书班</span>
+    <span class="logo-en">Craft &amp; Technology Reading Group</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#research" class="active"><span class="nav-text">研究方向</span></a></li>
+    <li><a href="#sessions"><span class="nav-text">读书班进展</span> <span class="nav-badge">2</span></a></li>
+    <li><a href="#databases"><span class="nav-text">数据库</span></a></li>
+    <li><a href="#alerts"><span class="nav-text">邮件推送</span> <span class="nav-badge">4</span></a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ───────────────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="hero-body">
+    <p class="hero-eyebrow">中国与东亚 · 物质文化 · 技术史</p>
+    <h1>跨学科<em>工艺与技术史</em><br>研究与阅读平台</h1>
+    <p class="hero-desc">聚合艺术史、考古学、科技史学者，系统梳理从早期中国至明清的工艺与物质文化传统，整合知网、JSTOR 等核心数据库，推动跨文化比较研究。</p>
+    <div class="hero-tags">
+      <span class="hero-tag">技术史</span>
+      <span class="hero-tag">艺术史</span>
+      <span class="hero-tag">冶金</span>
+      <span class="hero-tag">陶瓷</span>
+      <span class="hero-tag">漆器</span>
+      <span class="hero-tag">纺织</span>
+      <span class="hero-tag">印刷</span>
+      <span class="hero-tag">造像</span>
+      <span class="hero-tag">建筑</span>
+      <span class="hero-tag">墓葬</span>
+      <span class="hero-tag">material culture</span>
+      <span class="hero-tag">history of technology</span>
+    </div>
+  </div>
+  <aside class="next-card">
+    <div class="label">↑ 下次读书班</div>
+    <h3 class="serif">《宣和画谱》讨论<br>绘画 · 画谱 · 粉本</h3>
+    <div class="meta">
+      <strong>2025年7月</strong><br>
+      Eddy, <em>Media and the Mind</em>（Ruiying 提议）<br>
+      纸张媒介与知识物质性
+    </div>
+    <a class="btn-primary" href="#sessions">查看完整进度</a>
+  </aside>
+</section>
+
+<!-- ── Main content ───────────────────────────────────────────── -->
+<main class="main">
+
+  <!-- Row 1: Research directions + Sessions -->
+  <div class="two-col">
+
+    <!-- 研究方向 -->
+    <section id="research">
+      <div class="sec-head">
+        <div class="sec-head-left">
+          <span class="sec-num">一</span>
+          <h2>研究方向</h2>
+        </div>
+        <a class="sec-more" href="#">展开全部 →</a>
+      </div>
+
+      <div class="group-label">工艺门类</div>
+      <div class="tag-grid" id="craft-tags">
+        <div class="tag on" onclick="this.classList.toggle('on')">
+          <span class="t-zh">冶金 · 铸造</span><span class="t-en">metallurgy</span>
+        </div>
+        <div class="tag" onclick="this.classList.toggle('on')">
+          <span class="t-zh">陶瓷 · 窑业</span><span class="t-en">ceramics</span>
+        </div>
+        <div class="tag" onclick="this.classList.toggle('on')">
+          <span class="t-zh">漆器 · 髹饰</span><span class="t-en">lacquerware</span>
+        </div>
+        <div class="tag" onclick="this.classList.toggle('on')">
+          <span class="t-zh">纺织 · 染织</span><span class="t-en">textiles</span>
+        </div>
+        <div class="tag" onclick="this.classList.toggle('on')">
+          <span class="t-zh">印刷 · 版画</span><span class="t-en">printing / woodblock</span>
+        </div>
+        <div class="tag" onclick="this.classList.toggle('on')">
+          <span class="t-zh">造像 · 雕塑</span><span class="t-en">sculpture</span>
+        </div>
+        <div class="tag" onclick="this.classList.toggle('on')">
+          <span class="t-zh">建筑 · 营造</span><span class="t-en">architecture</span>
+        </div>
+        <div class="tag" onclick="this.classList.toggle('on')">
+          <span class="t-zh">墓葬 · 丧葬</span><span class="t-en">mortuary</span>
+        </div>
+        <div class="tag" onclick="this.classList.toggle('on')">
+          <span class="t-zh">绘画 · 画谱</span><span class="t-en">painting manuals</span>
+        </div>
+        <div class="tag" onclick="this.classList.toggle('on')">
+          <span class="t-zh">粉本 · 底稿</span><span class="t-en">preparatory drawings</span>
+        </div>
+        <div class="tag" onclick="this.classList.toggle('on')">
+          <span class="t-zh">工匠 · 匠人</span><span class="t-en">artisans / craftsmen</span>
+        </div>
+        <div class="tag" onclick="this.classList.toggle('on')">
+          <span class="t-zh">盐业 · 食品</span><span class="t-en">salt / food tech</span>
+        </div>
+      </div>
+
+      <div class="group-label">断代</div>
+      <div class="tag-grid tag-grid-4">
+        <div class="tag period" onclick="this.classList.toggle('on')">
+          <span class="t-zh">早期中国</span><span class="t-en">early China</span>
+        </div>
+        <div class="tag period" onclick="this.classList.toggle('on')">
+          <span class="t-zh">中古中国</span><span class="t-en">medieval China</span>
+        </div>
+        <div class="tag period on" onclick="this.classList.toggle('on')">
+          <span class="t-zh">明清</span><span class="t-en">Ming–Qing</span>
+        </div>
+        <div class="tag period" onclick="this.classList.toggle('on')">
+          <span class="t-zh">近现代</span><span class="t-en">modern</span>
+        </div>
+      </div>
+
+      <div class="group-label">地域比较</div>
+      <div class="tag-grid tag-grid-4">
+        <div class="tag geo" onclick="this.classList.toggle('on')">
+          <span class="t-zh">东亚</span><span class="t-en">East Asia</span>
+        </div>
+        <div class="tag geo" onclick="this.classList.toggle('on')">
+          <span class="t-zh">亚洲</span><span class="t-en">Asia</span>
+        </div>
+        <div class="tag geo" onclick="this.classList.toggle('on')">
+          <span class="t-zh">欧洲</span><span class="t-en">Europe</span>
+        </div>
+        <div class="tag geo" onclick="this.classList.toggle('on')">
+          <span class="t-zh">跨文化比较</span><span class="t-en">cross-cultural</span>
+        </div>
+      </div>
+      <p class="tag-hint">点击标签激活，联动数据库检索关键词与邮件推送筛选。</p>
+    </section>
+
+    <!-- 读书班进展 -->
+    <section id="sessions">
+      <div class="sec-head">
+        <div class="sec-head-left">
+          <span class="sec-num">二</span>
+          <h2>读书班进展</h2>
+        </div>
+        <a class="sec-more" href="#">完整书单 →</a>
+      </div>
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-date">2025年5月<br>第一次</div>
+          <div class="tl-spine"><div class="tl-dot done"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-title">第一次 Meeting <span class="badge b-done">已完成</span></div>
+            <div class="tl-desc">读书班成立，确定研究方向与书单框架</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2025年5月<br>第二次</div>
+          <div class="tl-spine"><div class="tl-dot done"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-title">第二次 Meeting <span class="badge b-done">已完成</span></div>
+            <div class="tl-desc">工艺史文献综述；确认7月议题</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2025年7月</div>
+          <div class="tl-spine"><div class="tl-dot next"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-title">《宣和画谱》讨论 <span class="badge b-next">下次</span></div>
+            <div class="tl-desc">绘画 · 画谱 · 粉本 / Eddy, <em>Media and the Mind</em>（Ruiying 提议）</div>
+          </div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-date">2025年8月</div>
+          <div class="tl-spine"><div class="tl-dot plan"></div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-title">工匠主题：比较与讨论 <span class="badge b-plan">待排</span></div>
+            <div class="tl-desc">Barbieri-Low, <em>Artisans in Early Imperial China</em>；Inomata 工匠意识形态；跨文化比较（亚洲 · 欧洲）</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div><!-- /two-col -->
+
+  <div class="ornament">❖</div>
+
+  <!-- Row 2: Databases + Alerts -->
+  <div class="two-col">
+
+    <!-- 数据库 -->
+    <section id="databases">
+      <div class="sec-head">
+        <div class="sec-head-left">
+          <span class="sec-num">三</span>
+          <h2>数据库接入</h2>
+        </div>
+        <a class="sec-more" href="#">联合检索 →</a>
+      </div>
+      <div class="db-grid">
+        <a class="db-card" href="https://www.cnki.net" target="_blank" rel="noopener">
+          <div class="db-logo">知网</div>
+          <div class="db-name">CNKI<br>中国知识基础设施</div>
+          <div class="db-status">主检索库</div>
+        </a>
+        <a class="db-card" href="https://www.jstor.org" target="_blank" rel="noopener">
+          <div class="db-logo" style="color: var(--gold);">JSTOR</div>
+          <div class="db-name">人文社科期刊<br>全文数据库</div>
+          <div class="db-status" style="color:var(--gold);">主检索库</div>
+        </a>
+        <a class="db-card" href="https://scholar.google.com" target="_blank" rel="noopener">
+          <div class="db-logo" style="font-size:13px; color:var(--ink-mid);">Google Scholar</div>
+          <div class="db-name">综合学术<br>免费检索</div>
+          <div class="db-status" style="color:var(--ink-soft);">免费可用</div>
+        </a>
+        <a class="db-card" href="https://ctext.org" target="_blank" rel="noopener">
+          <div class="db-logo" style="font-size:14px;">典籍</div>
+          <div class="db-name">CTEXT.ORG<br>中国文献</div>
+          <div class="db-status">一手文献</div>
+        </a>
+        <a class="db-card" href="https://www.semanticscholar.org" target="_blank" rel="noopener">
+          <div class="db-logo" style="font-size:13px;">Semantic<br>Scholar</div>
+          <div class="db-name">AI 学术检索<br>免费 API</div>
+          <div class="db-status">自动推送源</div>
+        </a>
+        <a class="db-card" href="https://dl.ndl.go.jp" target="_blank" rel="noopener">
+          <div class="db-logo" style="font-size:13px; color:var(--ink-mid);">NDL</div>
+          <div class="db-name">日本国立<br>国会图书馆</div>
+          <div class="db-status" style="color:var(--ink-soft);">日文资料</div>
+        </a>
+        <a class="db-card" href="https://www.wilsonweb.com" target="_blank" rel="noopener">
+          <div class="db-logo" style="font-size:12px;">Art Full<br>Text</div>
+          <div class="db-name">Wilson<br>艺术史全文</div>
+          <div class="db-status" style="color:var(--ink-soft);">机构可用</div>
+        </a>
+        <a class="db-card add" href="#" onclick="return false;">
+          <div class="db-logo" style="font-size:14px;">＋</div>
+          <div class="db-name">建议增补<br>数据库</div>
+          <div class="db-status">提议</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 邮件推送 -->
+    <section id="alerts">
+      <div class="sec-head">
+        <div class="sec-head-left">
+          <span class="sec-num">四</span>
+          <h2>邮件推送</h2>
+        </div>
+        <a class="sec-more" href="#">查看最新推送 →</a>
+      </div>
+      <div class="alert-list">
+        <div class="alert-row">
+          <div class="alert-src cnki">知网</div>
+          <div>
+            <div class="alert-title"><span class="alert-new"></span>《宋代官窑制度与瓷器生产的国家管控》</div>
+            <div class="alert-meta">故宫博物院院刊 · 2025年6期 · 3天前</div>
+          </div>
+        </div>
+        <div class="alert-row">
+          <div class="alert-src jstor">JSTOR</div>
+          <div>
+            <div class="alert-title"><span class="alert-new"></span>Jahner &amp; Rosenberg, "Matters of technique" — <em>Postmedieval</em> 16 (2025)</div>
+            <div class="alert-meta">已在书单 · 5天前</div>
+          </div>
+        </div>
+        <div class="alert-row">
+          <div class="alert-src jstor">JSTOR</div>
+          <div>
+            <div class="alert-title">Miller, "Bronze Mirrors in Ancient China" — <em>CAA.reviews</em> 2025</div>
+            <div class="alert-meta">Li Kin Sum 新著评论 · 2周前</div>
+          </div>
+        </div>
+        <div class="alert-row">
+          <div class="alert-src cnki">知网</div>
+          <div>
+            <div class="alert-title">张学谦《科举、印刷与册子本》— 北大学报 2025年9月</div>
+            <div class="alert-meta">已加入书单 · 3周前</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div><!-- /two-col -->
+
+  <!-- Email setup -->
+  <section class="email-panel" aria-label="邮件推送设置">
+    <div>
+      <h3>推送关键词</h3>
+      <p>选择感兴趣的领域，系统每双周从知网、JSTOR、Semantic Scholar 检索新论著，整理摘要后发送邮件。</p>
+      <div class="kw-chips" id="kw-chips">
+        <span class="kw-chip sel" onclick="this.classList.toggle('sel')">漆器</span>
+        <span class="kw-chip sel" onclick="this.classList.toggle('sel')">冶金</span>
+        <span class="kw-chip sel" onclick="this.classList.toggle('sel')">工艺史</span>
+        <span class="kw-chip" onclick="this.classList.toggle('sel')">陶瓷</span>
+        <span class="kw-chip" onclick="this.classList.toggle('sel')">纺织</span>
+        <span class="kw-chip" onclick="this.classList.toggle('sel')">版画</span>
+        <span class="kw-chip" onclick="this.classList.toggle('sel')">画谱</span>
+        <span class="kw-chip" onclick="this.classList.toggle('sel')">粉本</span>
+        <span class="kw-chip" onclick="this.classList.toggle('sel')">工匠</span>
+        <span class="kw-chip" onclick="this.classList.toggle('sel')">material culture</span>
+        <span class="kw-chip" onclick="this.classList.toggle('sel')">history of technology</span>
+        <span class="kw-chip" onclick="this.classList.toggle('sel')">Chinese art</span>
+      </div>
+      <div class="email-input-row">
+        <input type="text" placeholder="添加关键词…" id="kw-input" />
+        <button onclick="addKw()">＋添加</button>
+      </div>
+    </div>
+    <div>
+      <h3>频率与内容</h3>
+      <div class="freq-row">
+        <button class="freq-btn" onclick="setFreq(this)">月刊</button>
+        <button class="freq-btn on" onclick="setFreq(this)">双周</button>
+        <button class="freq-btn" onclick="setFreq(this)">每周</button>
+      </div>
+      <div class="check-list">
+        <label class="check-row"><input type="checkbox" checked> 新发表论文摘要</label>
+        <label class="check-row"><input type="checkbox" checked> 新出专著书评</label>
+        <label class="check-row"><input type="checkbox" checked> 读书班日程提醒（前3天）</label>
+        <label class="check-row"><input type="checkbox"> 相关学术会议信息</label>
+        <label class="check-row"><input type="checkbox"> 日文 · 韩文文献（NDL 等）</label>
+      </div>
+      <div class="email-input-row" style="margin-top:1rem;">
+        <input type="email" placeholder="your@university.edu" id="email-input" />
+        <button onclick="subscribe()">订阅</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
+<footer>
+  <p>工艺与技术史读书班 · Craft &amp; Technology Reading Group · 邀请制</p>
+  <a href="mailto:admin@example.com">联系管理员</a>
+</footer>
+
+<script>
+function addKw() {
+  var inp = document.getElementById('kw-input');
+  var val = inp.value.trim();
+  if (!val) return;
+  var chip = document.createElement('span');
+  chip.className = 'kw-chip sel';
+  chip.textContent = val;
+  chip.onclick = function() { this.classList.toggle('sel'); };
+  document.getElementById('kw-chips').appendChild(chip);
+  inp.value = '';
+}
+
+function setFreq(btn) {
+  btn.closest('.freq-row').querySelectorAll('.freq-btn').forEach(function(b) {
+    b.classList.remove('on');
+  });
+  btn.classList.add('on');
+}
+
+function subscribe() {
+  var email = document.getElementById('email-input').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('请输入有效的邮件地址');
+    return;
+  }
+  alert('已收到订阅申请：' + email + '\n管理员审核后将发送确认邮件。');
+}
+
+// Highlight active nav on scroll
+var sections = ['research','sessions','databases','alerts'];
+window.addEventListener('scroll', function() {
+  var scrollY = window.scrollY + 80;
+  var active = 'research';
+  sections.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el && el.offsetTop <= scrollY) active = id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + active);
+  });
+});
+</script>
+
+</body>
+</html>
