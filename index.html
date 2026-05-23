@@ -39,7 +39,7 @@
   --font-serif:    'Noto Serif SC', 'Songti SC', 'SimSun', serif;
   --font-sans:     'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --nav-h:         56px;
-  --painting-bg:   url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Emperor_Huizong_-_Five-colored_parakeet_on_a_blossoming_apricot_tree_-_Google_Art_Project.jpg");
+  --painting-bg:   url("assets/huizong-parakeet-bg.jpg");
 }
 
 html { scroll-behavior: smooth; }
@@ -59,19 +59,19 @@ body::before {
   inset: 0;
   z-index: -2;
   background-image:
-    linear-gradient(rgba(249,246,240,0.80), rgba(249,246,240,0.90)),
+    linear-gradient(rgba(249,246,240,0.54), rgba(249,246,240,0.74)),
     var(--painting-bg);
   background-size: cover;
   background-position: center 18%;
   background-attachment: fixed;
-  opacity: 0.58;
+  opacity: 0.72;
 }
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: rgba(249,246,240,0.58);
+  background: rgba(249,246,240,0.36);
 }
 
 /* ── Typography helpers ───────────────────────────────────────── */
@@ -149,7 +149,11 @@ body::after {
 
 /* ── Hero ─────────────────────────────────────────────────────── */
 .hero {
-  background: linear-gradient(90deg, rgba(243,237,228,0.92), rgba(243,237,228,0.74));
+  background:
+    linear-gradient(90deg, rgba(243,237,228,0.92), rgba(243,237,228,0.66), rgba(243,237,228,0.42)),
+    var(--painting-bg);
+  background-size: cover;
+  background-position: center 22%;
   border-bottom: 1px solid var(--border);
   padding: 3rem 2rem 2.5rem;
   display: grid;
